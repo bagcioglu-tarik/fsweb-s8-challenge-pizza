@@ -1,0 +1,40 @@
+.header {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 880px;
+  overflow-x: hidden;
+}
+
+.title h1 {
+  text-align: center;
+  font-size: 86px;
+  line-height: 92px;
+  letter-spacing: 1.5;
+  font-weight: 300;
+  font-family: var(--secondary-font);
+  color: white;
+}
+
+.button a {
+  border: 0;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 64px;
+  background-color: var(--primary-color);
+  color: var(--dark-bcg-color);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin: 0 64px;
+  }
+  .title h1 {
+    font-size: 72px;
+  }
+}

@@ -1,0 +1,32 @@
+
+.header-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  padding: 64px 0 16px;
+}
+
+.breadcrumbs {
+  padding: 16px 0;
+}
+
+.breadcrumbs a,
+.breadcrumbs p {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+  margin: 0 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+  max-width: 100%; 
+}
+}
+

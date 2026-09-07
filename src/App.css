@@ -1,0 +1,20 @@
+:root {
+  --primary-font: "Barlow", sans-serif;
+  --secondary-font: 'Roboto Condensed', sans-serif;
+  --tertiary-font: 'Quattrocento', sans-serif;
+  --eyebrow-font: 'Satisfy', sans-serif;
+
+  --primary-color: #FDC913;
+  --secondary-color: #5F5F5F;
+  --tertiary-color: #CE2829;
+  --dark-bcg-color: #292929;
+  --light-bcg-color: #FAF7F2;
+
+  font-size: 16px;
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+}
+
+a {
+  text-decoration: none;
+}

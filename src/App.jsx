@@ -1,21 +1,31 @@
-import { useState } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom/cjs/react-router-dom.min'
-import Order from './Order'
-import OrderSuccess from './OrderSuccess'
-import './App.css'
+import { useState } from "react";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom/cjs/react-router-dom.min";
+import Homepage from "./pages/Homepage";
+import Order from "./pages/Order";
+import Success from "./pages/Success";
+import "./App.css";
 
 function App() {
- return (
-  <BrowserRouter>
-     <Switch>
-       <Route path='/' exact>
-        <div>App</div>
-       </Route>
-       <Route path='/order' ><Order/></Route>
-       <Route path='/orderSuccess' ><OrderSuccess/></Route>
-     </Switch>
-   </BrowserRouter>
- )
+
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact>
+          <Homepage></Homepage>
+        </Route>
+        <Route path="/order">
+          <Order />
+        </Route>
+        <Route path="/success">
+          <Success />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
