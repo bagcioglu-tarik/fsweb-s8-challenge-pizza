@@ -61,7 +61,7 @@ Proje iki zorluk aşamalı,
 
 ### Görev 1: Proje Kurulumu
 
-- [ ] 1. **Create Repo From Template & Clone:**
+- [x] 1. **Create Repo From Template & Clone:**
 
   - Sağ üstteki yeşil "Use this template" butonu ile, bir kopya oluşturun. işlemi tamamlandıktan sonra, kendi GitHub hesabınızda yer alan depo bağlantısını kopyalayın.
   - VS Code'u açın ve terminali başlatın. Aşağıdaki komutu kullanarak depoyu bilgisayarınıza klonlayın:
@@ -83,13 +83,13 @@ Proje iki zorluk aşamalı,
   npm run dev
   ```
 
-- [ ] Yeni reponuzu bilgisayarınıza klonlayın
+- [x] Yeni reponuzu bilgisayarınıza klonlayın
 
 3. **Geliştirmeye Başlayın** 🤓 👩‍💻 🧑‍💻
 
-- [ ] Main branch üzerinde çalışın
-- [ ] Comitinizi pushlayın: `git push origin main`
-- [ ] Farklı paketler kullanmaya çalışın.
+- [x] Main branch üzerinde çalışın
+- [x] Comitinizi pushlayın: `git push origin main`
+- [x] Farklı paketler kullanmaya çalışın.
   - `axios`
   - `react-strap`
   - `toastify`
@@ -125,14 +125,14 @@ Logo proje klasöründe SVG olarak yüklü
 
 IT1 aşamasına getirdiğiniz (minimum viable product), aşağıdaki gereksinimlerin hepsini sağlamalıdır.
 
-- [ ] Hero alanındaki buton ile forma linklenen bir anasayfa.
-- [ ] Bir sipariş formu
-- [ ] En az 3 karakter gerektiren bir isim inputu. (İsim alanı tasarımda yok olabilir. Form'da notlar alanının üzerine ekleyebilirsin)
-- [ ] Malzemeler için bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı (Tasarımda yine eksik gösterilmiş)
-- [ ] Pizza boyutunun seçilebileceği bir radio
-- [ ] Notlar için ek bir text area
-- [ ] "Sipariş Ver" butonuna tıklandığında, sanki bir sunucuya veri gönderip, yanıt almış gibi davranmalı. Formda eksik bilgi veya hata varsa form disabled olmalı. (hem html hem submit fonksiyonundan gönderim engellenmeli)
-- [ ] Submit edince, Axios ile API request sonrası console'a gelen yanıtı basmalısın. [https://reqres.in/api/pizza](https://reqres.in/api/pizza) ücretsiz bir mock api servisine, `axios` ile POST ile kendi datanızı attığınızda (API key kullanmaya dikkat.  [https://reqres.in/signup](https://reqres.in/signup) sayfasında anlattığı gibi `reqres-free-v1` değerini API key olarak kullanabiliriz. İstekte şöyle bir HTTP header olmalı: `x-api-key: reqres-free-v1`), size sanki veritabanına kaydedilmiş gibi id ve tarih ekleyip aynı veriyi geri döner. (SONRASINDA GET ATMIYORUZ)
+- [x] Hero alanındaki buton ile forma linklenen bir anasayfa.
+- [x] Bir sipariş formu
+- [x] En az 3 karakter gerektiren bir isim inputu. (İsim alanı tasarımda yok olabilir. Form'da notlar alanının üzerine ekleyebilirsin)
+- [x] Malzemeler için bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı (Tasarımda yine eksik gösterilmiş)
+- [x] Pizza boyutunun seçilebileceği bir radio
+- [x] Notlar için ek bir text area
+- [x] "Sipariş Ver" butonuna tıklandığında, sanki bir sunucuya veri gönderip, yanıt almış gibi davranmalı. Formda eksik bilgi veya hata varsa form disabled olmalı. (hem html hem submit fonksiyonundan gönderim engellenmeli)
+- [x] Submit edince, Axios ile API request sonrası console'a gelen yanıtı basmalısın. [https://reqres.in/api/pizza](https://reqres.in/api/pizza) ücretsiz bir mock api servisine, `axios` ile POST ile kendi datanızı attığınızda (API key kullanmaya dikkat.  [https://reqres.in/signup](https://reqres.in/signup) sayfasında anlattığı gibi `reqres-free-v1` değerini API key olarak kullanabiliriz. İstekte şöyle bir HTTP header olmalı: `x-api-key: reqres-free-v1`), size sanki veritabanına kaydedilmiş gibi id ve tarih ekleyip aynı veriyi geri döner. (SONRASINDA GET ATMIYORUZ)
 - [ ] Bu yanıtı gelen response'u, sipariş özeti console'a yazmalı.
 
 Not - Form'un payloadu, veri **örnek olarak** şu şekilde olabilir. **Kendiniz de bu yapıyı değiştirebilirsiniz.**

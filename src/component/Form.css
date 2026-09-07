@@ -42,7 +42,7 @@ form hr {
   width: 100%;
 }
 
-.size-and-dough span {
+legend > span {
   color: var(--tertiary-color);
 }
 
@@ -69,12 +69,12 @@ form hr {
   font-weight: bold;
 }
 
-#note {
+#note, #clientName {
   border-radius: 6px;
   width: 100%;
   resize: none;
   padding: 16px;
-  border-color: #d9d9d9;
+  border: 1px solid #d9d9d9;
   box-sizing: border-box;
 }
 

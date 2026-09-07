@@ -22,7 +22,7 @@ export default function Homepage() {
           </h1>
         </div>
 
-        <div className="button">
+        <div className="button" data-cy="order-button">
           <Link to="/order">ACIKTIM</Link>
         </div>
       </div>

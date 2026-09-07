@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Form.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const order = {
   name: "Position Absolute Acı Pizza",
@@ -37,6 +38,7 @@ export default function Form() {
     dough: "",
     ingredients: [],
     note: "",
+    clientName: "",
   });
 
   const [errors, setErrors] = useState({
@@ -44,6 +46,7 @@ export default function Form() {
     dough: false,
     ingredients: false,
     amount: false,
+    clientName: false,
   });
 
   const [ingredientsPrice, setIngredientsPrice] = useState(0);
@@ -54,7 +57,6 @@ export default function Form() {
 
   function handleChange(event) {
     let { name, value, type, checked } = event.target;
-    // value = type === "checkbox" ? checked : value;
 
     if (type === "checkbox") {
       let ingredientsEditedForm;
@@ -76,6 +78,7 @@ export default function Form() {
         ingredientsEditedForm.ingredients.length <= 10
           ? false
           : true;
+
       setErrors({ ...errors, ingredients: ingredientsInLimit });
       setIngredientsPrice(ingredientsEditedForm.ingredients.length * 5);
     } else {
@@ -83,9 +86,11 @@ export default function Form() {
     }
 
     if (name === "size") {
-      setErrors({ ...errors, size: value ? false : true });
+      setErrors({ ...errors, [name]: value ? false : true });
     } else if (name === "dough") {
-      setErrors({ ...errors, dough: value ? false : true });
+      setErrors({ ...errors, [name]: value ? false : true });
+    } else if (name === "clientName") {
+      setErrors({ ...errors, [name]: value.length >= 3 ? false : true });
     }
   }
 
@@ -108,12 +113,34 @@ export default function Form() {
       dough: "",
       ingredients: [],
       note: "",
+      clientName: "",
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     handleReset();
+    if (!isValid) return;
+
+    axios({
+      method: "POST",
+      url: "https://reqres.in/api/pizza",
+      headers: { "x-api-key": "free_user_3I0UlXwOnyUnYLQiTN2efl2hNbz" },
+      data: {
+        orderName: order.name,
+        ...Form,
+        amount: amount,
+        ingredientsPrice: ingredientsPrice,
+        totalPrice: (ingredientsPrice + order.price) * amount,
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     history.push("/success");
   }
 
@@ -121,6 +148,7 @@ export default function Form() {
     if (
       Form.size !== "" &&
       Form.dough !== "" &&
+      Form.clientName.length >= 3 &&
       Form.ingredients.length >= 4 &&
       Form.ingredients.length <= 10 &&
       amount >= 1 &&
@@ -134,7 +162,7 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="orderInfo">
+      <div className="orderInfo" data-cy="orderInfo">
         <h2 className="orderName">{order.name}</h2>
 
         <div className="orderDetails">
@@ -147,7 +175,7 @@ export default function Form() {
       </div>
 
       <div className="size-and-dough">
-        <fieldset className="size">
+        <fieldset className="size" data-cy="size">
           <legend>
             Boyut Seç <span>*</span>
           </legend>
@@ -167,7 +195,7 @@ export default function Form() {
           })}
         </fieldset>
 
-        <fieldset className="dough">
+        <fieldset className="dough"  data-cy="dough">
           <legend>
             Hamur Seç <span>*</span>
           </legend>
@@ -181,9 +209,11 @@ export default function Form() {
         </fieldset>
       </div>
 
-      <fieldset className="additional-ingredients">
+      <fieldset className="additional-ingredients" data-cy="additional-ingredients">
         <div className="ingredients-title">
-          <legend>Ek Malzemeler</legend>
+          <legend>
+            Ek Malzemeler <span>*</span>
+          </legend>
           <p>En az 4, En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
         </div>
 
@@ -196,6 +226,7 @@ export default function Form() {
                   type="checkbox"
                   onChange={handleChange}
                   required={errors.ingredients}
+                  checked={Form.ingredients.includes(item.toLowerCase())}
                 />{" "}
                 {item}
               </label>
@@ -204,7 +235,24 @@ export default function Form() {
         </div>
       </fieldset>
 
-      <fieldset className="note">
+      <fieldset className="client-name" data-cy="client-name">
+        <label htmlFor="clientName">
+          <legend>
+            İsminiz <span>*</span>
+          </legend>
+        </label>
+        <input
+          type="text"
+          name="clientName"
+          id="clientName"
+          placeholder="İsminizi giriniz"
+          value={Form.clientName}
+          onChange={handleChange}
+          required={errors.clientName}
+        ></input>
+      </fieldset>
+
+      <fieldset className="note" data-cy="note">
         <label htmlFor="note">
           <legend>Sipariş Notu</legend>
         </label>
@@ -219,7 +267,7 @@ export default function Form() {
 
       <hr />
 
-      <fieldset className="order-check">
+      <fieldset className="order-check" data-cy="order-check">
         <div className="counter">
           <div>
             <button
@@ -254,7 +302,7 @@ export default function Form() {
           </div>
         </div>
 
-        <button className="btn" disabled={!isValid}>
+        <button className="btn" disabled={!isValid} data-cy="submit-button">
           SİPARİŞ VER
         </button>
       </fieldset>

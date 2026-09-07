@@ -14,7 +14,3 @@
   font-family: var(--primary-font);
   color: var(--secondary-color);
 }
-
-a {
-  text-decoration: none;
-}

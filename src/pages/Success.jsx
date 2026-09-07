@@ -8,7 +8,7 @@ export default function Success() {
         <Header hasBreadcrumbs={false} />
       </header>
       <main>
-        <div className="title">
+        <div className="title" data-cy="success-title">
           <h1>
             TEBRİKLER! <br /> SİPARİŞİNİZ ALINDI!
           </h1>
