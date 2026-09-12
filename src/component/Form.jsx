@@ -93,7 +93,6 @@ export default function Form({ handleFormData }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    handleReset();
     if (!isValid) return;
 
     axios({
@@ -115,6 +114,7 @@ export default function Form({ handleFormData }) {
         handleFormData({ isError: true, message: err.message });
       });
 
+    handleReset();
     history.push("/checkout");
   }
 
