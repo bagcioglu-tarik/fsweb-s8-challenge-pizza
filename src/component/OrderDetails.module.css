@@ -1,0 +1,53 @@
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.orderInfo h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 32px 0 24px;
+}
+
+.orderInfo .orderDetails {
+  width: 202px;
+}
+
+.orderDetails span {
+  font-weight: 700;
+}
+
+.orderCheckout {
+  display: flex;
+  justify-content: center;
+}
+
+.orderCheckout .orderSum {
+  border: 1px solid white;
+  border-radius: 6px;
+  margin: 40px 0;
+  width: 350px;
+  padding: 48px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.orderSum * {
+  margin: 0;
+}
+
+.orderSum .midEl {
+  margin: 24px 0 12px;
+}
+
+.orderSum .sum {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.125rem;
+}

@@ -1,0 +1,23 @@
+
+.headerContainer {
+  max-width: 532px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  padding: 56px 0 32px;
+}
+
+@media (max-width: 600px) {
+  .headerContainer {
+  margin: 0 10%;
+  }
+}
+
+@media (max-width: 460px) {
+  .logo img {
+  max-width: 100%; 
+}
+}
+

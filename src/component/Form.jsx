@@ -1,52 +1,26 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import "./Form.css";
+import styles from "./Form.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import data from "../Data";
 
-const order = {
-  name: "Position Absolute Acı Pizza",
-  price: 85.5,
-  rate: 4.9,
-  stock: 200,
-  desc: "Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.",
-};
-
-const ingredients = [
-  "Pepperoni",
-  "Tavuk Izgara",
-  "Mısır",
-  "Sarımsak",
-  "Ananas",
-  "Sosis",
-  "Soğan",
-  "Sucuk",
-  "Biber",
-  "Kabak",
-  "Kanada Jambonu",
-  "Domates",
-  "Jalepeno",
-  "Roka",
-];
-
-const size = ["Küçük", "Orta", "Büyük"];
-
-export default function Form() {
+export default function Form({ handleFormData }) {
   const [isValid, setIsValid] = useState(false);
 
   const [Form, setForm] = useState({
     size: "",
     dough: "",
     ingredients: [],
-    note: "",
     clientName: "",
+    note: "",
   });
 
   const [errors, setErrors] = useState({
     size: false,
     dough: false,
     ingredients: false,
-    amount: false,
     clientName: false,
+    amount: false,
   });
 
   const [ingredientsPrice, setIngredientsPrice] = useState(0);
@@ -112,8 +86,8 @@ export default function Form() {
       size: "",
       dough: "",
       ingredients: [],
-      note: "",
       clientName: "",
+      note: "",
     });
   }
 
@@ -127,21 +101,22 @@ export default function Form() {
       url: "https://reqres.in/api/pizza",
       headers: { "x-api-key": "free_user_3I0UlXwOnyUnYLQiTN2efl2hNbz" },
       data: {
-        orderName: order.name,
+        orderName: data.products[1].name,
         ...Form,
         amount: amount,
         ingredientsPrice: ingredientsPrice,
-        totalPrice: (ingredientsPrice + order.price) * amount,
+        totalPrice: (ingredientsPrice + data.products[1].price) * amount,
       },
     })
       .then((res) => {
-        console.log(res.data);
+        handleFormData(res.data)
+        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
       });
 
-    history.push("/success");
+    history.push("/checkout");
   }
 
   useEffect(() => {
@@ -161,90 +136,91 @@ export default function Form() {
   }, [Form, amount]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="orderInfo" data-cy="orderInfo">
-        <h2 className="orderName">{order.name}</h2>
-
-        <div className="orderDetails">
-          <p className="orderPrice">{order.price}₺</p>
-          <p className="orderRate">{order.rate}</p>
-          <p className="orderStock">({order.stock})</p>
-        </div>
-
-        <p className="orderDesc">{order.desc}</p>
-      </div>
-
-      <div className="size-and-dough">
-        <fieldset className="size" data-cy="size">
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
+      <div className={styles.sizeAndDough}>
+        <fieldset className={styles.size} data-cy="size">
           <legend>
-            Boyut Seç <span>*</span>
+            Boyut Seç <span aria-hidden>*</span>
           </legend>
-          {size.map((size, index) => {
-            return (
-              <label key={index}>
-                <input
-                  name="size"
-                  type="radio"
-                  value={size.toLowerCase()}
-                  onChange={handleChange}
-                  required={errors.size}
-                />{" "}
-                {size}
-              </label>
-            );
-          })}
+          <div className={styles.sizeOptions}>
+            {data.size.map((size, index) => {
+              return (
+                <label key={index}>
+                  <input
+                    name="size"
+                    type="radio"
+                    value={size}
+                    onChange={handleChange}
+                    required={errors.size}
+                  />{" "}
+                  {size}
+                </label>
+              );
+            })}
+          </div>
         </fieldset>
 
-        <fieldset className="dough"  data-cy="dough">
+        <fieldset className={styles.dough} data-cy="dough">
           <legend>
-            Hamur Seç <span>*</span>
+            Hamur Seç <span aria-hidden>*</span>
           </legend>
-
-          <select name="dough" onChange={handleChange} required={errors.dough}>
-            <option value="">--Hamur Kalınlığı Seç--</option>
-            <option value="ince">Süpper İnce</option>
-            <option value="standart">Standart</option>
-            <option value="kalın">Kalın</option>
-          </select>
+          <div className={styles.doughSelect}>
+            <select
+              name="dough"
+              onChange={handleChange}
+              required={errors.dough}
+            >
+              <option hidden value="">
+                - Hamur Kalınlığı Seç -
+              </option>
+              <option value="İnce">Süpper İnce</option>
+              <option value="Standart">Standart</option>
+              <option value="Kalın">Kalın</option>
+            </select>
+          </div>
         </fieldset>
       </div>
 
-      <fieldset className="additional-ingredients" data-cy="additional-ingredients">
-        <div className="ingredients-title">
+      <fieldset
+        className={styles.additionalIngredients}
+        data-cy="additional-ingredients"
+      >
+        <div className={styles.ingredientsTitle}>
           <legend>
             Ek Malzemeler <span>*</span>
           </legend>
           <p>En az 4, En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
         </div>
 
-        <div className="ingredients">
-          {ingredients.map((item, index) => {
+        <div className={styles.ingredients}>
+          {data.ingredients.map((item, index) => {
             return (
-              <label key={index}>
+              <label className={styles.checkbox} key={index}>
                 <input
-                  value={item.toLowerCase()}
+                  value={item}
                   type="checkbox"
                   onChange={handleChange}
                   required={errors.ingredients}
-                  checked={Form.ingredients.includes(item.toLowerCase())}
-                />{" "}
-                {item}
+                  checked={Form.ingredients.includes(item)}
+                />
+                <span className={styles.checkmark}></span> {item}
               </label>
             );
           })}
         </div>
       </fieldset>
 
-      <fieldset className="client-name" data-cy="client-name">
+      <fieldset className={styles.clientName} data-cy="client-name">
         <label htmlFor="clientName">
           <legend>
-            İsminiz <span>*</span>
+            İsminiz <span aria-hidden>*</span>
           </legend>
         </label>
         <input
           type="text"
           name="clientName"
           id="clientName"
+          className={styles.formControl}
           placeholder="İsminizi giriniz"
           value={Form.clientName}
           onChange={handleChange}
@@ -252,13 +228,14 @@ export default function Form() {
         ></input>
       </fieldset>
 
-      <fieldset className="note" data-cy="note">
+      <fieldset className={styles.note} data-cy="note">
         <label htmlFor="note">
           <legend>Sipariş Notu</legend>
         </label>
         <textarea
           name="note"
           id="note"
+          className={styles.formControl}
           rows="1"
           placeholder="Siparişine eklemek istediğin bir not var mı?"
           onChange={handleChange}
@@ -267,42 +244,48 @@ export default function Form() {
 
       <hr />
 
-      <fieldset className="order-check" data-cy="order-check">
-        <div className="counter">
+      <fieldset className={styles.orderCheck} data-cy="products-check">
+        <div className={styles.counter}>
           <div>
             <button
               type="button"
-              className="btn minus"
+              className={`${styles.btn} ${styles.minus}`}
               onClick={handleClick}
               disabled={amount <= 1}
+              aria-label="Miktari azalt"
             >
               -
             </button>
-            <div className="counter-num">{amount}</div>
+            <div className={styles.counterNum}>{amount}</div>
             <button
               type="button"
-              className="btn plus"
+              className={`${styles.btn} ${styles.plus}`}
               onClick={handleClick}
               disabled={amount >= 10}
+              aria-label="Miktari arttır"
             >
               +
             </button>
           </div>
         </div>
 
-        <div className="sum-check">
+        <div className={styles.sumCheck}>
           <legend>Sipariş Toplamı</legend>
-          <div className="sum">
+          <div className={styles.sum}>
             <p>Seçimler</p>
             <p>{ingredientsPrice * amount}₺</p>
           </div>
-          <div className="sum">
+          <div className={styles.sum}>
             <p>Toplam</p>
-            <p>{(ingredientsPrice + order.price) * amount}₺</p>
+            <p>{(ingredientsPrice + data.products[1].price) * amount}₺</p>
           </div>
         </div>
 
-        <button className="btn" disabled={!isValid} data-cy="submit-button">
+        <button
+          className={`${styles.btn} ${styles.orderBtn}`}
+          disabled={!isValid}
+          data-cy="submit-button"
+        >
           SİPARİŞ VER
         </button>
       </fieldset>

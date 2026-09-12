@@ -1,0 +1,377 @@
+.formContainer {
+  max-width: 532px;
+  margin: 0 auto;
+}
+
+.formContainer h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--dark-bcg-color);
+}
+
+.formContainer fieldset {
+  margin: 40px 0;
+}
+
+legend {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--dark-bcg-color);
+}
+
+.formContainer hr {
+  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+}
+
+.sizeAndDough {
+  display: flex;
+  width: 100%;
+}
+
+legend > span {
+  color: var(--tertiary-color);
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 50%;
+}
+
+.sizeOptions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sizeOptions input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sizeOptions label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--light-bcg-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.sizeOptions label:has(input:checked) {
+  background-color: #ffeecc;
+  outline: 4px dashed var(--primary-color);
+}
+
+.sizeOptions label:has(input:hover) {
+  background-color: #d9d9d9;
+}
+
+.sizeOptions label:has(input:focus-visible) {
+  outline: 1px solid black;
+}
+
+.doughSelect {
+  position: relative;
+  max-width: 100%;
+}
+
+.doughSelect select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--light-bcg-color);
+  color: var(--secondary-color);
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.doughSelect select:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: -2px;
+}
+
+.doughSelect::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -3px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: var(--secondary-color);
+  pointer-events: none;
+}
+
+@supports (appearance: base-select) {
+  .doughSelect select {
+    appearance: base-select;
+  }
+  .doughSelect::after {
+    display: none;
+  }
+
+  .doughSelect select::picker(select) {
+    appearance: base-select;
+    background-color: var(--light-bcg-color);
+    border: 0;
+    border-radius: 6px;
+    padding: 0;
+  }
+
+  .doughSelect select::picker-icon {
+    color: black;
+    transition: rotate 0.35s;
+  }
+
+  .doughSelect select:open::picker-icon {
+    rotate: 180deg;
+  }
+
+  .doughSelect option {
+    color: var(--secondary-color);
+    padding: 12px 16px;
+    cursor: pointer;
+  }
+
+  .doughSelect option:hover {
+    background-color: #d9d9d9;
+    color: var(--tertiary-color);
+    transition: 0.2s ease-in-out;
+    outline: none;
+  }
+
+  .doughSelect option:checked {
+    background-color: #ffeecc;
+    color: var(--tertiary-color);
+  }
+
+  .doughSelect option::checkmark {
+    display: none;
+  }
+}
+
+.dough {
+  width: 50%;
+}
+
+.ingredientsTitle p {
+  padding-bottom: 32px;
+}
+
+.ingredients {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  width: 100%;
+  gap: 16px;
+  font-weight: bold;
+}
+
+.checkbox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkbox input:focus-visible ~ .checkmark {
+  outline: 1px solid black;
+}
+
+.checkmark {
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 45px;
+  min-width: 45px;
+  background-color: var(--light-bcg-color);
+  transition: 0.2s ease-in-out;
+}
+
+.checkbox:hover input ~ .checkmark {
+  background-color: #d9d9d9;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox .checkmark:after {
+  left: 16px;
+  top: 8px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.formControl {
+  border-radius: 6px;
+  width: 100%;
+  resize: none;
+  padding: 16px;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+}
+
+.formControl:focus {
+  outline: 2px solid var(--primary-color);
+  border: 1px solid transparent;
+}
+
+.orderCheck {
+  display: grid;
+  column-gap: 1rem;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "counter sum"
+    ".       submit";
+}
+
+.orderCheck button {
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  grid-area: submit;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  grid-area: counter;
+}
+
+.btn {
+  padding: 18px 24px;
+  background-color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn.minus {
+  border-radius: 6px 0 0 6px;
+}
+
+.btn:disabled {
+  background-color: var(--light-bcg-color);
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #d9d9d9;
+}
+
+.counterNum {
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  width: 56px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn.plus {
+  border-radius: 0 6px 6px 0;
+}
+
+.counter div {
+  display: flex;
+}
+
+.sumCheck {
+  border: 1px solid #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 6px;
+  grid-area: sum;
+}
+
+.sum {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.sum:nth-of-type(2) {
+  color: var(--tertiary-color);
+}
+
+.orderBtn {
+  background: linear-gradient(
+      to left,
+      var(--primary-color) 50%,
+      var(--tertiary-color) 50%
+    )
+    right;
+  background-size: 200% 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.orderBtn:hover:not(:disabled) {
+  background-position: left;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .formContainer {
+    margin: 0 10%;
+  }
+
+  .sizeAndDough {
+    flex-wrap: wrap;
+  }
+
+  .orderCheck {
+    grid-template-areas:
+      "sum sum"
+      "counter submit";
+    row-gap: 16px;
+  }
+}

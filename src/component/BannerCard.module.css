@@ -1,0 +1,81 @@
+.bannerCardContainer {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  border-radius: 16px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.bannerCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bannerCard h3,
+.bannerCard p {
+  margin-top: 0;
+}
+
+.bannerCard span {
+  color: var(--tertiary-color);
+}
+
+.card-1 {
+  grid-area: card1;
+  color: white;
+}
+
+.card-1 h3 {
+  width: 270px;
+  font-family: var(--tertiary-font);
+  font-size: 68px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.card-1 p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-2 {
+  grid-area: card2;
+  color: white;
+}
+
+.card-3 {
+  grid-area: card3;
+  color: black;
+}
+
+.card-2 h3,
+.card-3 h3 {
+  font-size: 32px;
+  width: 220px;
+  font-weight: 600;
+}
+
+.btn {
+  font-size: 14px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: var(--tertiary-color);
+  background-color: white;
+  padding: 1rem 2rem;
+  transition: background-color 0.35s ease-in-out;
+}
+
+.card-1 .btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.card-2 .btn:hover,
+.card-3 .btn:hover {
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+

@@ -1,0 +1,53 @@
+header {
+  background-color: var(--tertiary-color);
+}
+
+.formTop {
+  background-color: var(--light-bcg-color);
+  padding-bottom: 24px;
+}
+
+.formTop > * {
+  max-width: 532px;
+  margin: 0 auto;
+}
+
+.formBanner > img {
+  max-width: 100%;
+}
+
+.breadcrumbs {
+  padding: 16px 0;
+}
+
+.breadcrumbs a {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.breadcrumbs strong {
+  color: var(--tertiary-color);
+}
+
+.orderDetails {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+.orderPrice {
+  flex-grow: 2;
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--dark-bcg-color);
+}
+
+.orderDesc {
+  line-height: 2;
+}
+
+@media (max-width: 600px) {
+  .formTop > * {
+    margin: 0 10%;
+  }
+}

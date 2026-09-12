@@ -1,0 +1,20 @@
+.categoryItem {
+  width: 150px;
+  align-self: center;
+}
+
+.categoryItem > a {
+  color: initial;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  transition: color 0.2s ease-in-out;
+}
+
+.categoryItem > a:hover {
+  color: var(--tertiary-color);
+}
+
+

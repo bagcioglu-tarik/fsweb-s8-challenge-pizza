@@ -1,0 +1,84 @@
+.footerContainer {
+  background-color: var(--dark-bcg-color);
+  color: white;
+  font-size: 18px;
+}
+
+.footerContainer a {
+  color: white;
+}
+
+.footerContainer hr {
+  margin: 0;
+}
+
+.footerTop {
+  margin: 0 20%;
+  padding: 64px 0;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 64px;
+  flex-wrap: wrap;
+  flex-basis: 350px;
+}
+
+.addresses {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-style: normal;
+}
+
+.address p {
+word-break: break-all;
+}
+
+.addressIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.footerLogo,
+.footerInstagram ul img {
+  max-width: 100%;
+}
+
+.footerTitles {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.footerProductRange ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerProductRange li a:hover {
+  color: var(--tertiary-color);
+  transition: 0.2s ease-in-out;
+}
+
+.footerInstagram ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.footerTrademark {
+  margin: 0 20%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerTrademark i {
+  font-size: 24px;
+}
