@@ -1,0 +1,29 @@
+.errorContainer {
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 30%;
+}
+
+.errorContainer h1 {
+  margin-bottom: 0;
+  font-size: 32px;
+  font-family: var(--tertiary-font);
+}
+
+.errorContainer p {
+  font-size: 8px;
+  font-style: italic;
+}
+
+.errorContainer img {
+  margin: 0 30%;
+}
+
+@media (max-width: 600px) {
+  .errorContainer,
+  .errorContainer img {
+    margin: 0 10%;
+  }
+}

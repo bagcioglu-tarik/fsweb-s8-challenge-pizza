@@ -3,10 +3,10 @@ import styles from "./OrderDetails.module.css";
 export default function OrderDetails({ formData }) {
   return (
     <>
-      <section className={styles.orderInfo}>
+      <section className={styles.orderInfo} data-cy='orderInfo'>
         <h3>{formData.orderName}</h3>
 
-        <div className={styles.orderDetails}>
+        <div className={styles.orderDetails} data-cy='orderDetails'>
           <p>
             Boyut: <span>{formData.size}</span>
           </p>
@@ -27,14 +27,14 @@ export default function OrderDetails({ formData }) {
         </div>
       </section>
 
-      <section className={styles.orderCheckout}>
+      <section className={styles.orderCheckout} data-cy='orderCheckout'>
         <div className={styles.orderSum}>
           <h3>Sipariş Toplamı</h3>
-          <div className={`${styles.sum} ${styles.midEl}`}>
+          <div className={`${styles.sum} ${styles.midEl}`} >
             <p>Seçimler</p>
             <p>{formData.ingredientsPrice}₺</p>
           </div>
-          <div className={styles.sum}>
+          <div className={styles.sum} data-cy='sum'>
             <p>Toplam</p>
             <p>{formData.totalPrice}₺</p>
           </div>

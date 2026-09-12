@@ -109,11 +109,10 @@ export default function Form({ handleFormData }) {
       },
     })
       .then((res) => {
-        handleFormData(res.data)
-        console.log(res.data)
+        handleFormData(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        handleFormData({ isError: true, message: err.message });
       });
 
     history.push("/checkout");
@@ -243,6 +242,18 @@ export default function Form({ handleFormData }) {
       </fieldset>
 
       <hr />
+
+      {!isValid && (
+        <div className={styles.errorMessage}>
+          <p>
+            <span>⚠️</span>
+            <span>
+              Lütfen sipariş formundaki tüm zorunlu alanları doldurduğunuzdan
+              emin olunuz!
+            </span>
+          </p>
+        </div>
+      )}
 
       <fieldset className={styles.orderCheck} data-cy="products-check">
         <div className={styles.counter}>

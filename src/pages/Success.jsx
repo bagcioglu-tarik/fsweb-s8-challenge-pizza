@@ -3,6 +3,7 @@ import styles from "./Success.module.css";
 import Footer from "../component/Footer";
 import OrderDetails from "../component/OrderDetails";
 import LoadingUI from "../component/LoadingUI";
+import Error from "../component/Error";
 
 export default function Success({ formData }) {
   return (
@@ -14,6 +15,8 @@ export default function Success({ formData }) {
 
         {!formData ? (
           <LoadingUI />
+        ) : formData.isError ? (
+          <Error formError={formData.message} />
         ) : (
           <main>
             <section className={styles.title} data-cy="success-title">

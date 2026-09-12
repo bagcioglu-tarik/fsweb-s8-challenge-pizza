@@ -22,6 +22,7 @@ legend {
 .formContainer hr {
   color: var(--secondary-color);
   background-color: var(--secondary-color);
+  margin-bottom: 40px;
 }
 
 .sizeAndDough {
@@ -50,7 +51,6 @@ legend > span {
   width: 1px;
   height: 1px;
   opacity: 0;
-  pointer-events: none;
 }
 
 .sizeOptions label {
@@ -200,7 +200,6 @@ legend > span {
   width: 1px;
   height: 1px;
   opacity: 0;
-  pointer-events: none;
 }
 
 .checkbox input:focus-visible ~ .checkmark {
@@ -261,9 +260,26 @@ legend > span {
   border: 1px solid transparent;
 }
 
+.errorMessage {
+  color: var(--tertiary-color);
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.errorMessage p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.errorMessage span:first-child {
+  font-size: 24px;
+}
+
 .orderCheck {
   display: grid;
   column-gap: 1rem;
+  margin-top: 0 !important;
   grid-template-columns: auto 1fr;
   grid-template-areas:
     "counter sum"
